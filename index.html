@@ -277,8 +277,26 @@ document.getElementById('locationBtn').addEventListener('click', function(){
 
 document.getElementById('bookingForm').addEventListener('submit',function(e){
   e.preventDefault();
+  const form = this;
+  const name = form.querySelector('[name="name"]').value.trim();
+  const phone = form.querySelector('[name="phone"]').value.trim();
+  const service = form.querySelector('[name="service"]').value;
+  const date = form.querySelector('[name="date"]').value || 'Not specified';
+  const pickup = form.querySelector('[name="pickup"]').value.trim();
+  const details = form.querySelector('[name="details"]').value.trim() || 'Not specified';
+
+  const message = `🚕 *Sujin Cabs & Travels - Booking Request*\n\n` +
+    `👤 Name: ${name}\n` +
+    `📞 Phone: ${phone}\n` +
+    `🚗 Service: ${service}\n` +
+    `📅 Travel Date: ${date}\n` +
+    `📍 Pickup: ${pickup}\n` +
+    `📝 Journey Details: ${details}`;
+
+  const whatsappUrl = 'https://wa.me/919952256893?text=' + encodeURIComponent(message);
+  window.open(whatsappUrl, '_blank');
+  document.getElementById('success').textContent = '✓ WHATSAPP OPENED — Please press Send to send your booking request to Sujin Cabs.';
   document.getElementById('success').style.display='block';
-  this.reset();
 });
 </script>
 
@@ -346,4 +364,6 @@ document.getElementById('bookingForm').addEventListener('submit',function(e){
 
 </body>
 </html>
+```
 
+svg
